@@ -1,6 +1,6 @@
 
 const int on_time = 25;
-const int off_time = 150;
+const int off_time = 5;
 int bldc_state = 0;
 
 // Define pinouts
