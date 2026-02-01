@@ -1,10 +1,3 @@
-
-[![Forks](https://img.shields.io/github/forks/RedRedL/brushless-motor-ESC)](https://github.com/RedRedL/brushless-motor-ESC/network/members)
-[![Stargazers](https://img.shields.io/github/stars/RedRedL/brushless-motor-ESC)](https://github.com/RedRedL/brushless-motor-ESC/stargazers)
-[![Issues](https://img.shields.io/github/issues/RedRedL/brushless-motor-ESC)](https://github.com/RedRedL/brushless-motor-ESC/issues)
-[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue)](https://unlicense.org/)
-
-
 <br />
 <div align="center">
   <a href="https://github.com/RedRedL/brushless-motor-ESC">
