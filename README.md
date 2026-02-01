@@ -8,7 +8,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/RedRedL/brushless-motor-ESC">
-    <img src="README/logo.png" alt="Logo" width="80" height="80">
+    <img src="README/logo.png" alt="Logo" width="160" height="160">
   </a>
   <h3 align="center">Simple Brushless Motor Electronic Speed Controller</h3>
 
