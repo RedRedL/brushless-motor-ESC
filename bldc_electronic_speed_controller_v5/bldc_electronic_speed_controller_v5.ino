@@ -14,12 +14,15 @@ References:
 
 const byte MAX_PWM_DUTY = 255;
 const byte MIN_PWM_DUTY = 50;
+const byte DEACTIVATION_THRESHHOLD = 5;
 volatile byte bldc_state = 0;
-unsigned int i = 5000;
+
+volatile bool motorActive = false;
 
 volatile long unsigned int signalStart = 0;
 volatile long unsigned int signalEnd = 0;
 volatile long unsigned int signalLength = 0;
+volatile byte pendingDutyValue = 50;
 
 void pwm_reading_interrupt() {
   int isHigh = digitalRead(THROTTLE);
@@ -34,11 +37,14 @@ void pwm_reading_interrupt() {
 void update() {
   signalLength = signalEnd - signalStart;
 
+  if (signalLength < 900 || signalLength > 2100) {
+    pendingDutyValue = 0;
+    return;
+  }
+
   int pwmValue = map(signalLength, 1000, 2000, 0, 255);
-  int dutyValue = constrain(pwmValue, 0, 255);
-  
-  adjust_pwm(dutyValue);
-}
+  pendingDutyValue = constrain(pwmValue, 0, 255);
+  }
 
 void adjust_pwm(int duty) {
   if (duty < MIN_PWM_DUTY)
@@ -145,17 +151,19 @@ void setup() {
   ADCSRA = (0 << ADEN);  // Disable ADC
   ADCSRB = (1 << ACME);  // Enable ADC multiplexer for comparator
   // Set initial state and PWM
-  adjust_pwm(50);  // Set PWM to 50/255
+  adjust_pwm(100);  // Set PWM to 50/255
 
   pinMode(THROTTLE, INPUT);
   attachInterrupt(digitalPinToInterrupt(THROTTLE), pwm_reading_interrupt, CHANGE);
+  pinMode(LED_BUILTIN, OUTPUT);
 }
+
 
 
 // Analog comparator ISR
 ISR (ANALOG_COMP_vect) {
   // BEMF debounce
-  for(i = 0; i < 25; i++) {
+  for(int i = 0; i < 10; i++) {
     if(bldc_state & 1){
       if(!(ACSR & 0x20)) i -= 1;
     }
@@ -163,23 +171,42 @@ ISR (ANALOG_COMP_vect) {
       if((ACSR & 0x20))  i -= 1;
     }
   }
-  
+ 
   bldc_next(bldc_state);
   bldc_state++;
   bldc_state %= 6;
 }
 
+void start() {
+  digitalWrite(LED_BUILTIN, HIGH);
+  bldc_state = 0;
+  adjust_pwm(100);
 
-void loop() {
-  // Open-loop startup
-  while(i > 100) {
+  for (int i = 5000; i > 100; i -= 20) {
     delayMicroseconds(i);
     bldc_next(bldc_state);
     bldc_state++;
     bldc_state %= 6;
-    i = i - 20;  // Gradually increase speed
   }
-
-
+  motorActive = true;
   ACSR |= (1 << ACIE);  
 }
+
+void stop() {
+  motorActive = false;
+  disable_driver_pins();
+  ACSR &= ~(1 << ACIE);
+  digitalWrite(LED_BUILTIN, LOW);
+}
+
+void loop() {
+  if (!motorActive && pendingDutyValue > MIN_PWM_DUTY) 
+    start();
+  
+  if (motorActive && pendingDutyValue < DEACTIVATION_THRESHHOLD)
+    stop();
+
+  if (motorActive) 
+    adjust_pwm(pendingDutyValue);
+  
+  }
