@@ -1,8 +1,8 @@
 
-![Forks][forks-shield][forks-url]
-![Stargazers][stars-shield][stars-url]
-![Issues][issues-shield][issues-url]
-![Unlicense License][license-shield][license-url]
+[![Forks](https://img.shields.io/github/forks/RedRedL/brushless-motor-ESC)](https://github.com/RedRedL/brushless-motor-ESC/network/members)
+[![Stargazers](https://img.shields.io/github/stars/RedRedL/brushless-motor-ESC)](https://github.com/RedRedL/brushless-motor-ESC/stargazers)
+[![Issues](https://img.shields.io/github/issues/RedRedL/brushless-motor-ESC)](https://github.com/RedRedL/brushless-motor-ESC/issues)
+[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue)](https://unlicense.org/)
 
 
 <br />
