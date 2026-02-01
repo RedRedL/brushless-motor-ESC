@@ -6,7 +6,7 @@
   <h3 align="center">Simple Brushless Motor Electronic Speed Controller</h3>
 
   <p align="center">
-    A simple BLDC ESC with RC PWM control build on perfboard.
+    A simple BLDC ESC with RC PWM control built on perfboard.
   </p>
 </div>
 
