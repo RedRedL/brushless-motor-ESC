@@ -19,7 +19,7 @@ This project started with my naivety and ignorance. In an effort to avoid buying
 While trying to understand how a BLDC ESC works, I found many existing projects either too confusing or too advanced for my skill level. That’s why I decided to build my own barebones ESC as a clear, beginner-friendly learning project to figure out how this stuff actually works.
 
 ## Schematic
-![Schematic](README/brushless_esc_image_page.png)
+![Schematic](README/brushless_esc_image_page.jpg)
 
 ### Bill of Materials
 
