@@ -21,6 +21,10 @@ While trying to understand how a BLDC ESC works, I found many existing projects 
 ## Schematic
 ![Schematic](README/brushless_esc_image_page.jpg)
 
+## Video
+
+<video src="https://github.com/user-attachments/assets/7b0f5fe2-bafd-46f4-bc8f-bd8ba11c937b" controls></video>
+
 ### Bill of Materials
 
 Most of this stuff I bought from Aliexpress (cause im broke)
