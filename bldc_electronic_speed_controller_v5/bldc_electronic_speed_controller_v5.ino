@@ -77,7 +77,6 @@ void bldc_next(byte bldc_state) {
       // Enable PWM on Driver A, set IN high
       TCCR1A |= (1 << COM1A1);
       PORTB |= (1 << PB2);  // IN high for Driver A
-      // Set Driver B low (no PWM, just low)
       PORTB |= (1 << PB3);  // SD high for Driver B (but PWM disabled)
       ADMUX = 6;
       ACSR |= (1 << ACIS1) | (1 << ACIS0);
@@ -117,7 +116,6 @@ void bldc_next(byte bldc_state) {
     case 5: // Driver C is high, Driver B is low.
       disable_driver_pins();
       TCCR2A |= (1 << COM2B1);
-      // Changed: PIN 2 (PD2) -> PIN 4 (PD4). Original: PORTD |= (1 << PD2);
       PORTD |= (1 << PD4);  // IN high for Driver C
       PORTB |= (1 << PB3);  // SD high for Driver B
       ADMUX = 4;
