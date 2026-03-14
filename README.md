@@ -63,7 +63,7 @@ Red - Redstbox@proton.me
 As a total beginner this project would not be possible without these resources (and people!)
 
 * [Port Manipulation](https://docs.arduino.cc/retired/hacking/software/PortManipulation/)
-* [Malven's Flexbox Cheatsheet](https://docs.arduino.cc/language-reference/en/functions/math/map/)
+* [Arduino Language Reference](https://docs.arduino.cc/language-reference/en/functions/math/map/)
 * [Foolish Engineer Bootstrap Gate driving circuit](https://www.youtube.com/watch?v=em5BuCFSuBw&t)
 * [Simple Circuits ESC](https://simple-circuit.com/arduino-brushless-dc-motor-controller/)
 * [HyperSpace Pirates ESC](https://www.youtube.com/watch?v=F8l9Z1HGYcU)
